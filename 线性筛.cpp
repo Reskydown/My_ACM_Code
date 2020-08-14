@@ -1,5 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
+/*
+标准的欧拉线性筛法，用于求1~n的所有素数
+cnt为素数个数
+prime[1] ~ prime[cnt]储存了这些素数
+调用get_p(x) 即可将1~x的所有素数求出
+Author:Reskyllr 
+*/
 const int N = 1e6 + 10;
 int vis[N],prime[N];
 int cnt;
@@ -15,8 +22,8 @@ void get_p(int n) {
 	}
 } 
 int main() {
-	get_p(100);
+	get_p(100);//传入n即可 
 	for(int i = 1 ; i <= cnt ; i ++) {
-		cout << prime[i] << endl;
+		printf("%d\n",prime[i]); 
 	}
 }

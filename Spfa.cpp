@@ -1,5 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
+/*
+题目链接:https://www.luogu.com.cn/problem/P3371
+SPFA求图最短路(适用于带负权边的图)
+SPFA也可以用来判负环 
+使用std::vector邻接表存图 
+时间复杂度O(VE)
+空间复杂度O(E) 
+*/ 
 const int N = 1e5 + 10;
 int dis[N],vis[N];
 struct edge {
@@ -29,12 +37,12 @@ void spfa(int x) {
 		int t = q.front();q.pop();
 		vis[t] = 0;
 		int lt = v[t].size();
-		for(int i = 0 ; i < lt ; i ++) {
+		for(int i = 0 ; i < lt ; i ++) {//松弛 
 			int g = v[t][i].w;
 			int s = v[t][i].to;
 			if(dis[t] + g < dis[s]) {
 				dis[s] = dis[t] + g;
-				if(!vis[s]) vis[s] = 1,q.push(s);
+				if(!vis[s]) vis[s] = 1,q.push(s);//已松弛且不在队列中的入队 
 			}
 		}
 	}
